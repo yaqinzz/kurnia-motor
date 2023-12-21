@@ -1,92 +1,83 @@
-import Card from "./Card";
-import { useState } from "react";
+// import Card from "./Card";
+// import { useState } from "react";
 
-function Action(props:any) {
-  
-  // TODO : BackEnd, urutkan card berdasarkan waktu
-  const card = props.cards
-  
-  // FILTER SLIDE
-  const date = new Date()
-  const today = `${date.getDate()}-${date.getMonth()+1}-${date.getFullYear()}`
-  
-  const newCard = card.filter((value:any) => {
-    return value.date === today && value.status === "waiting"
-  });
+// function Action(props: any) {
+//   // TODO : BackEnd, urutkan card berdasarkan waktu
+//   const card = props.cards;
 
-  // console.log(newCard)
+//   // FILTER SLIDE
+//   const date = new Date();
+//   const today = `${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}`;
 
-  // HANDLE SLIDE
-  const cardCount = 3
-  const slideCount = Math.ceil(newCard.length / cardCount)
-  const slideCountArrray = Array.from({length:slideCount}, (_, index) => index)
+//   const newCard = card.filter((value: any) => {
+//     return value.date === today && value.status === "waiting";
+//   });
 
-  const [activeSlide, setActiveSlide] = useState(0)
+//   // console.log(newCard)
 
-  const firstCard = activeSlide * cardCount
-  const currentSlide = newCard.slice(firstCard, firstCard + cardCount)
+//   // HANDLE SLIDE
+//   const cardCount = 3;
+//   const slideCount = Math.ceil(newCard.length / cardCount);
+//   const slideCountArrray = Array.from({ length: slideCount }, (_, index) => index);
 
-  return (
-    <div>
+//   const [activeSlide, setActiveSlide] = useState(0);
 
-      {/* CARD */}
-      <div className="flex gap-5 w-fit">
-        {currentSlide.map((value:any, index:any) => (
-          <Card.Action key={index} img={value.img} text={value.text} btn={value.btn} link={value.link} status={value.status}/>
-        ))}
-      </div>
+//   const firstCard = activeSlide * cardCount;
+//   const currentSlide = newCard.slice(firstCard, firstCard + cardCount);
 
-      {/* BUTTON */}
-      <div className="mt-10 flex gap-3 justify-center items-center">
-        {
-          slideCountArrray.map((_, index) => (
-            <div onClick={() => setActiveSlide(index)} key={index} className={`cursor-pointer w-10 h-3 rounded-full ${index === activeSlide ? "bg-brand-1 p-2" : "bg-[#DFDCD8]"}`} />
-          ))
-        }
-      </div>
+//   return (
+//     <div>
+//       {/* CARD */}
+//       <div className="flex gap-5 w-fit">
+//         {currentSlide.map((value: any, index: any) => (
+//           <Card.Action key={index} img={value.img} text={value.text} btn={value.btn} link={value.link} status={value.status} />
+//         ))}
+//       </div>
 
-    </div>
-  );
-}
+//       {/* BUTTON */}
+//       <div className="mt-10 flex gap-3 justify-center items-center">
+//         {slideCountArrray.map((_, index) => (
+//           <div onClick={() => setActiveSlide(index)} key={index} className={`cursor-pointer w-10 h-3 rounded-full ${index === activeSlide ? "bg-brand-1 p-2" : "bg-[#DFDCD8]"}`} />
+//         ))}
+//       </div>
+//     </div>
+//   );
+// }
 
-function Review(props:any) {
-  const cardPickup = props.cards
+// function Review(props: any) {
+//   const cardPickup = props.cards;
 
-  const cardCount = 3
-  const slideCount = Math.ceil(cardPickup.length / cardCount)
-  const slideCountArrray = Array.from({length:slideCount}, (_, index) => index)
+//   const cardCount = 3;
+//   const slideCount = Math.ceil(cardPickup.length / cardCount);
+//   const slideCountArrray = Array.from({ length: slideCount }, (_, index) => index);
 
-  const [activeSlide, setActiveSlide] = useState(0)
+//   const [activeSlide, setActiveSlide] = useState(0);
 
-  const firstCard = activeSlide * cardCount
-  const currentSlide = cardPickup.slice(firstCard, firstCard + cardCount)
+//   const firstCard = activeSlide * cardCount;
+//   const currentSlide = cardPickup.slice(firstCard, firstCard + cardCount);
 
-  return (
-    <div>
+//   return (
+//     <div>
+//       {/* CARD */}
+//       <div className="flex gap-5 w-fit">
+//         {currentSlide.map((value: any, index: any) => (
+//           <Card.Review key={index} img={value.img} star={value.star} text={value.text} />
+//         ))}
+//       </div>
 
-      {/* CARD */}
-      <div className="flex gap-5 w-fit">
-        {currentSlide.map((value:any, index:any) => (
-          <Card.Review key={index} img={value.img} star={value.star} text={value.text} />
-        ))}
-      </div>
+//       {/* BUTTON */}
+//       <div className="mt-10 flex gap-3 justify-center items-center">
+//         {slideCountArrray.map((_, index) => (
+//           <div onClick={() => setActiveSlide(index)} key={index} className={`cursor-pointer w-10 h-3 rounded-full ${index === activeSlide ? "bg-brand-1 p-2" : "bg-[#DFDCD8]"}`} />
+//         ))}
+//       </div>
+//     </div>
+//   );
+// }
 
-      {/* BUTTON */}
-      <div className="mt-10 flex gap-3 justify-center items-center">
-        {
-          slideCountArrray.map((_, index) => (
-            <div onClick={() => setActiveSlide(index)} key={index} className={`cursor-pointer w-10 h-3 rounded-full ${index === activeSlide ? "bg-brand-1 p-2" : "bg-[#DFDCD8]"}`} />
-          ))
-        }
-      </div>
+// const Slider = {
+//   Action: Action,
+//   Review: Review,
+// };
 
-    </div>
-  );
-}
-
-const Slider = {
-  Action,
-  Review,
-}
-
-export default Slider;
+// export default Slider;
